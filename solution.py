@@ -59,10 +59,8 @@ def naked_twins(values):
                     for item in set(unit).difference(set([box,peer])):
                         if firstDigit in values[item]:
                             assign_value(values, item, values[item].replace(firstDigit,''))
-                            # values[item] = values[item].replace(firstDigit,'')
                         if secondDigit in values[item]:
                             assign_value(values, item, values[item].replace(secondDigit,''))
-                            # values[item] = values[item].replace(secondDigit,'')
 
     return values
 
