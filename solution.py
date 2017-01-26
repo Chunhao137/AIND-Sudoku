@@ -1,5 +1,24 @@
 assignments = []
+rows = 'ABCDEFGHI'
+cols = '123456789'
 
+def cross(A, B):
+    "Cross product of elements in A and elements in B."
+    return [a+b for a in A for b in B]
+
+
+boxes = cross(rows, cols)
+
+row_units = [cross(r, cols) for r in rows]
+column_units = [cross(rows, c) for c in cols]
+square_units = [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')]
+#dialog constraint
+forward_diagonal = [rd+cd for rd in rows for cd in cols if rows.index(rd) == cols.index(cd) ]
+back_diagonal = [rd+cd for rd in rows for cd in cols[::-1] if rows.index(rd)== cols[::-1].index(cd)]
+
+unitlist = row_units + column_units + square_units + [forward_diagonal] + [back_diagonal]
+units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
+peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 def assign_value(values, box, value):
     """
     Please use this function to update your values dictionary!
@@ -47,24 +66,7 @@ def naked_twins(values):
 
     return values
 
-def cross(A, B):
-    "Cross product of elements in A and elements in B."
-    return [a+b for a in A for b in B]
 
-rows = 'ABCDEFGHI'
-cols = '123456789'
-boxes = cross(rows, cols)
-
-row_units = [cross(r, cols) for r in rows]
-column_units = [cross(rows, c) for c in cols]
-square_units = [cross(rs, cs) for rs in ('ABC','DEF','GHI') for cs in ('123','456','789')]
-#dialog constraint
-forward_diagonal = [rd+cd for rd in rows for cd in cols if rows.index(rd) == cols.index(cd) ]
-back_diagonal = [rd+cd for rd in rows for cd in cols[::-1] if rows.index(rd)== cols[::-1].index(cd)]
-
-unitlist = row_units + column_units + square_units + [forward_diagonal] + [back_diagonal]
-units = dict((s, [u for u in unitlist if s in u]) for s in boxes)
-peers = dict((s, set(sum(units[s],[]))-set([s])) for s in boxes)
 def grid_values(grid):
     "Convert grid into a dict of {square: char} with '.' for empties."
     values = []
