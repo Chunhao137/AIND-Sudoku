@@ -3,11 +3,11 @@
 
 # Question 1 (Naked Twins)
 Q: How do we use constraint propagation to solve the naked twins problem?
-A: For this problem, we identified two boxes with the same two digits belonging to the same peer group. With this constraint, we could immediately eliminate any digits in the naked twin's peer group that have the same digits as the naked twins. This technique allows us reduce the set of possible solutions and optimize our solution.
+A: For this problem, we identified two boxes with the same two digits belonging to the same peer group. With this constraint, we could immediately eliminate any digits in the naked twin's peer group that have the same digits as the naked twins. This technique allows us reduce the set of possible solutions and search space is reduced.
 
 # Question 2 (Diagonal Sudoku)
 Q: How do we use constraint propagation to solve the diagonal sudoku problem?
-A: In the original problem, we were constrained by columns, rows and squares. With this constraint we were able to make sure that no duplicates appeared in the associated  columns, rows and squares. To solve the  diagonal sudoku problem, we simply extended the constraints to include diagonals which allowed us to reduce the set of outcomes even further. 
+A: In the original problem, we were constrained by columns, rows and squares. To solve the diagonal sudoku problem, we simply extended the constraints to include diagonals which allowed us to reduce the set of outcomes even further and hence reducing the search space. 
 ### Install
 
 This project requires **Python 3**.
